@@ -519,7 +519,7 @@
         let dp = hargaGlobal * 0.20;
         let sisa = hargaGlobal - dp;
 
-        let teksWA =let teksWA = `*BOOKING NEW ORDER - NAOKI ARVINO PHOTOGRAPHY*
+        let teksWA = `*BOOKING NEW ORDER - NAP STUDIO*
 
 • *Paket Terpilih:* ${paket}
 • *Total Harga:* ${formatRupiah(hargaGlobal)}
@@ -535,16 +535,6 @@
 • *Jam / Waktu:* ${jam}
 • *Instagram Klien:* ${ig}
 • *Lokasi G-Maps:* ${lokasi}`;
-
-if (uk) {
-    teksWA += `
-
-*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.`;
-} else {
-    teksWA += `
-
-*Catatan:* Belum melampirkan file foto bukti transfer.`;
-}
 
         if (fileStruk) {
             teksWA += "\\n\\n*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.";

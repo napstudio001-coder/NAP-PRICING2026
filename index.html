@@ -519,20 +519,32 @@
         let dp = hargaGlobal * 0.20;
         let sisa = hargaGlobal - dp;
 
-        let teksWA = "*BOOKING NEW ORDER - NAP STUDIO*\\n\\n" +
-                     "• *Paket Terpilih:* " + paket + "\\n" +
-                     "• *Total Harga:* " + formatRupiah(hargaGlobal) + "\\n" +
-                     "• *DP Minimal (20%):* " + formatRupiah(dp) + "\\n" +
-                     "• *Sisa Pelunasan:* " + formatRupiah(sisa) + "\\n\\n" +
-                     "*DATA PENJADWALAN:*\\n" +
-                     "• *Pengantin Pria:* " + pria + "\\n" +
-                     "• *Pengantin Wanita:* " + wanita + "\\n" +
-                     "• *MUA / Sanggar:* " + mua + "\\n" +
-                     "• *Acara:* " + acara + "\\n" +
-                     "• *Tanggal:* " + tanggal + "\\n" +
-                     "• *Jam / Waktu:* " + jam + "\\n" +
-                     "• *Instagram Klien:* " + ig + "\\n" +
-                     "• *Lokasi G-Maps:* " + lokasi;
+        let teksWA =let teksWA = `*BOOKING NEW ORDER - NAOKI ARVINO PHOTOGRAPHY*
+
+• *Paket Terpilih:* ${paket}
+• *Total Harga:* ${formatRupiah(hargaGlobal)}
+• *DP Minimal (20%):* ${formatRupiah(dp)}
+• *Sisa Pelunasan:* ${formatRupiah(sisa)}
+
+*DATA PENJADWALAN:*
+• *Pengantin Pria:* ${pria}
+• *Pengantin Wanita:* ${wanita}
+• *MUA / Sanggar:* ${mua}
+• *Acara:* ${acara}
+• *Tanggal:* ${tanggal}
+• *Jam / Waktu:* ${jam}
+• *Instagram Klien:* ${ig}
+• *Lokasi G-Maps:* ${lokasi}`;
+
+if (uk) {
+    teksWA += `
+
+*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.`;
+} else {
+    teksWA += `
+
+*Catatan:* Belum melampirkan file foto bukti transfer.`;
+}
 
         if (fileStruk) {
             teksWA += "\\n\\n*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.";
@@ -540,7 +552,7 @@
             teksWA += "\\n\\n*Catatan:* Belum melampirkan file foto bukti transfer.";
         }
 
-        let nomorTujuan = "62810985372";
+        let nomorTujuan = "6282116046404";
         let linkAkhir = "https://api.whatsapp.com/send?phone=" + 6282116046404 + "&text=" + encodeURIComponent(teksWA);
         
         window.open(linkAkhir, '_blank');

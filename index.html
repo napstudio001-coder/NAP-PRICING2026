@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAP PRICING 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f4;
+            color: #333;
+            padding: 15px;
+            padding-bottom: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            text-align: center;
+            background-color: #d1ded6;
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .main-header h1 {
+            font-size: 24px;
+            color: #2c4a3e;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .main-header p {
+            font-size: 11px;
+            color: #555;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: #2c4a3e;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-left: 4px solid #2e7d32;
+            padding-left: 10px;
+        }
+
+        /* Desain Kartu Paket Pernikahan */
+        .pl-card {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .pl-card.active {
+            border-color: #2e7d32;
+            background-color: #fbfcfa;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+        }
+
+        .pl-card h3 {
+            font-size: 18px;
+            color: #2c4a3e;
+            margin-bottom: 4px;
+        }
+
+        .pl-card .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #bfa15f;
+            margin-bottom: 12px;
+        }
+
+        .pl-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .pl-card ul li {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .pl-card ul li::before {
+            content: "•";
+            color: #2e7d32;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .btn-select {
+            width: 100%;
+            background-color: #f0f0f0;
+            color: #444;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pl-card.active .btn-select {
+            background-color: #2e7d32;
+            color: white;
+        }
+
+        /* Area Form Penjadwalan */
+        .form-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-top: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #fafafa;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #2c4a3e;
+            background-color: #fff;
+            outline: none;
+        }
+
+        /* Kotak Perhitungan Otomatis */
+        .calc-box {
+            background-color: #f0f7f4;
+            border-left: 4px solid #2e7d32;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .calc-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .calc-item:last-child {
+            margin-bottom: 0;
+            padding-top: 8px;
+            border-top: 1px solid #d0e2d5;
+        }
+
+        .calc-item span.value {
+            font-weight: 700;
+            color: #1b5e20;
+        }
+
+        /* Info Nota / Pembayaran */
+        .info-box {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .bank-info {
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.2);
+        }
+
+        /* Tombol Musik Melayang */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="main-header">
+        <h1>NAP PRICING 2026</h1>
+        <p>Capture Your Beautiful Moments</p>
+    </div>
+
+    <h2 class="section-title">Pilih Paket Pernikahan</h2>
+
+    <div class="pl-card" id="card-akad">
+        <h3>NAP Akad</h3>
+        <div class="price">Rp 1.000.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(1 gaun)</li>
+            <li>1 Album Hard Cover</li>
+            <li>80 lembar Cetak 4R</li>
+            <li>2 Lembar Cetak 10R</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP Akad', 1000000, 'card-akad')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-01">
+        <h3>NAP 01</h3>
+        <div class="price">Rp 1.400.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Hard Cover</li>
+            <li>120 lembar Cetak 4R</li>
+            <li>3 Lembar Cetak 10R</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 01', 1400000, 'card-01')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-02">
+        <h3>NAP 02</h3>
+        <div class="price">Rp 1.600.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Hard Cover</li>
+            <li>120 lembar Cetak 4R</li>
+            <li>3 Lembar Cetak 10R</li>
+            <li>1 Cetak 12R+Frame</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 02', 1600000, 'card-02')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-03">
+        <h3>NAP 03</h3>
+        <div class="price">Rp 2.000.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>2 Album Hard Cover</li>
+            <li>140 lembar Cetak 4R</li>
+            <li>4 Lembar Cetak 10R</li>
+            <li>2 Cetak 12R+Frame</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive+FD</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 03', 2000000, 'card-03')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-04">
+        <h3>NAP 04</h3>
+        <div class="price">Rp 2.600.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Magazine 20x30</li>
+            <li>1 Album Hard Cover</li>
+            <li>80 lembar Cetak 4R</li>
+            <li>2 Lembar Cetak 10R</li>
+            <li>2 Cetak 12R+Frame</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive+FD</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 04', 2600000, 'card-04')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-05">
+        <h3>NAP 05</h3>
+        <div class="price">Rp 3.000.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Magazine 30x30</li>
+            <li>1 Album Hard Cover</li>
+            <li>120 lembar Cetak 4R</li>
+            <li>3 Lembar Cetak 10R</li>
+            <li>2 Cetak 12R+Frame</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 05', 3000000, 'card-05')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-06">
+        <h3>NAP 06</h3>
+        <div class="price">Rp 3.500.000</div>
+        <ul>
+            <li>2 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Magazine 30x30</li>
+            <li>2 Album Hard Cover</li>
+            <li>140 lembar Cetak 4R</li>
+            <li>4 Lembar Cetak 10R</li>
+            <li>2 Cetak 16R+Frame</li>
+            <li>Free Video Teaser</li>
+            <li>Soft File G-Drive+FD</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP 06', 3500000, 'card-06')">Pilih Paket Ini</button>
+    </div>
+
+    <div class="pl-card" id="card-gold">
+        <h3>NAP GOLD</h3>
+        <div class="price">Rp 5.500.000</div>
+        <ul>
+            <li>3-4 Fotografer</li>
+            <li>Unlimited Shoot~(gaun terakhir)</li>
+            <li>1 Album Magazine 30x30</li>
+            <li>2 Album Hard Cover</li>
+            <li>150 lembar Cetak 4R</li>
+            <li>4 Lembar Cetak 10R</li>
+            <li>2 Cetak 16R+Frame</li>
+            <li>1 Video Cinema</li>
+            <li>1 Video Teaser</li>
+            <li>Free Video BTS</li>
+            <li>Soft File G-Drive+FD Custom</li>
+        </ul>
+        <button class="btn-select" onclick="pilihPaket('NAP GOLD', 5500000, 'card-gold')">Pilih Paket Ini</button>
+    </div>
+
+    <h2 class="section-title" id="weddingForm" style="margin-top: 30px;">Form Penjadwalan & Nota</h2>
+    
+    <div class="form-container">
+        <div class="form-group">
+            <label>Paket Dipilih :</label>
+            <input type="text" id="inputPaket" placeholder="Klik salah satu paket di atas..." readonly style="font-weight: bold; color: #4A634A;">
+        </div>
+
+        <div class="calc-box">
+            <div class="calc-item">
+                <span>Total Harga:</span>
+                <span class="value" id="txt-total">Rp 0</span>
+            </div>
+            <div class="calc-item">
+                <span>Minimal DP (20%):</span>
+                <span class="value" id="txt-dp">Rp 0</span>
+            </div>
+            <div class="calc-item">
+                <span>Sisa Pelunasan:</span>
+                <span class="value" id="txt-sisa">Rp 0</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nama Calon Pengantin Pria :</label>
+            <input type="text" id="namaPria" placeholder="Nama pengantin pria...">
+        </div>
+
+        <div class="form-group">
+            <label>Nama Calon Pengantin Wanita :</label>
+            <input type="text" id="namaWanita" placeholder="Nama pengantin wanita...">
+        </div>
+
+        <div class="form-group">
+            <label>MUA :</label>
+            <input type="text" id="mua" placeholder="Nama MUA / Sanggar...">
+        </div>
+
+        <div class="form-group">
+            <label>Link Share Location (Google Maps) :</label>
+            <input type="url" id="lokasi" placeholder="Tempel link shareloc Maps acara disini...">
+        </div>
+
+        <div class="form-group">
+            <label>Acara :</label>
+            <input type="text" id="acara" placeholder="e.g. Akad & Resepsi">
+        </div>
+
+        <div class="form-group">
+            <label>Tanggal :</label>
+            <input type="text" id="tanggal" placeholder="e.g. Sabtu, 6 Juni 2026">
+        </div>
+
+        <div class="form-group">
+            <label>Jam :</label>
+            <input type="text" id="jam" placeholder="e.g. 08.00 - Selesai">
+        </div>
+
+        <div class="form-group">
+            <label>IG :</label>
+            <input type="text" id="ig" placeholder="@username_klien">
+        </div>
+
+        <div class="form-group">
+            <label>Upload Bukti Transfer DP :</label>
+            <input type="file" id="buktiTransfer" accept="image/*">
+        </div>
+
+        <div class="info-box">
+            <p><strong>Catatan Penting:</strong> Batas pelunasan pembayaran adalah Hari H, maksimal H+2 setelah acara.</p>
+            <p>• Album Ready 1 Bulan</p>
+            
+            <div class="bank-info">
+                <strong>Ketentuan Pembayaran:</strong><br>
+                • DP min 20%<br>
+                • Bank BCA: <strong>0810985372</strong><br>
+                • a.n. <strong>MUH MUKHID</strong>
+            </div>
+        </div>
+
+        <button class="btn-submit" onclick="kirimKeWhatsApp()">Form Booking Sekarang</button>
+    </div>
+</div>
+
+<audio id="bg-music" loop>
+    <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mpeg">
+</audio>
+<div class="music-control" id="music-btn" onclick="toggleMusic()">🎵</div>
+
+<script>
+    let hargaGlobal = 0;
+
+    // Fungsi format rupiah
+    function formatRupiah(angka) {
+        return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    // Fungsi klik kartu paket
+    function pilihPaket(namaPaket, harga, cardId) {
+        const cards = document.getElementsByClassName('pl-card');
+        for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('active');
+        }
+        
+        document.getElementById(cardId).classList.add('active');
+        document.getElementById('inputPaket').value = namaPaket;
+        hargaGlobal = harga;
+
+        let dpMinimal = harga * 0.20;
+        let sisaBayar = harga - dpMinimal;
+
+        document.getElementById("txt-total").innerText = formatRupiah(harga);
+        document.getElementById("txt-dp").innerText = formatRupiah(dpMinimal);
+        document.getElementById("txt-sisa").innerText = formatRupiah(sisaBayar);
+        
+        document.getElementById('weddingForm').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Fungsi mengumpulkan data dan mengirimkannya ke WhatsApp
+    function kirimKeWhatsApp() {
+        let paket = document.getElementById('inputPaket').value;
+        let pria = document.getElementById('namaPria').value;
+        let wanita = document.getElementById('namaWanita').value;
+        let mua = document.getElementById('mua').value;
+        let lokasi = document.getElementById('lokasi').value;
+        let acara = document.getElementById('acara').value;
+        let tanggal = document.getElementById('tanggal').value;
+        let jam = document.getElementById('jam').value;
+        let ig = document.getElementById('ig').value;
+        let fileStruk = document.getElementById('buktiTransfer').files[0];
+
+        if (!paket || !pria || !wanita || !tanggal || !lokasi) {
+            alert("Mohon pilih paket dan isi data utama (Nama, Tanggal, dan Share Location) terlebih dahulu!");
+            return;
+        }
+
+        let dp = hargaGlobal * 0.20;
+        let sisa = hargaGlobal - dp;
+
+        let teksWA = "*BOOKING NEW ORDER - NAP STUDIO*\\n\\n" +
+                     "• *Paket Terpilih:* " + paket + "\\n" +
+                     "• *Total Harga:* " + formatRupiah(hargaGlobal) + "\\n" +
+                     "• *DP Minimal (20%):* " + formatRupiah(dp) + "\\n" +
+                     "• *Sisa Pelunasan:* " + formatRupiah(sisa) + "\\n\\n" +
+                     "*DATA PENJADWALAN:*\\n" +
+                     "• *Pengantin Pria:* " + pria + "\\n" +
+                     "• *Pengantin Wanita:* " + wanita + "\\n" +
+                     "• *MUA / Sanggar:* " + mua + "\\n" +
+                     "• *Acara:* " + acara + "\\n" +
+                     "• *Tanggal:* " + tanggal + "\\n" +
+                     "• *Jam / Waktu:* " + jam + "\\n" +
+                     "• *Instagram Klien:* " + ig + "\\n" +
+                     "• *Lokasi G-Maps:* " + lokasi;
+
+        if (fileStruk) {
+            teksWA += "\\n\\n*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.";
+        } else {
+            teksWA += "\\n\\n*Catatan:* Belum melampirkan file foto bukti transfer.";
+        }
+
+        let nomorTujuan = "62810985372";
+        let linkAkhir = "https://api.whatsapp.com/send?phone=" + nomorTujuan + "&text=" + encodeURIComponent(teksWA);
+        
+        window.open(linkAkhir, '_blank');
+    }
+
+    // Pengaturan Audio Musik Latar Belakang
+    var music = document.getElementById("bg-music");
+    var musicBtn = document.getElementById("music-btn");
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play().catch(e => console.log("Akses audio dibatasi"));
+            musicBtn.innerText = "🔊";
+        } else {
+            music.pause();
+            musicBtn.innerText = "🔈";
+        }
+    }
+
+    // Memancing musik di HP pada ketukan pertama
+    document.addEventListener('click', function() {
+        if (music.paused) {
+            music.play().catch(e => console.log("Izin audio aktif"));
+            musicBtn.innerText = "🔊";
+        }
+    }, { once: true });
+</script>
+
+</body>
+</html>

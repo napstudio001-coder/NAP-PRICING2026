@@ -3,87 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAP PRICING 2026</title>
+    <title>NAP STUDIO - PRICING PACKAGES</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f6f4;
-            color: #333;
-            padding: 15px;
-            padding-bottom: 30px;
+            background-color: #e5e3e0; /* Warna krem aesthetic sesuai gambar */
+            color: #2b2b2b;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            max-width: 500px;
-            margin: 0 auto;
+            max-width: 550px;
+            width: 100%;
+            background: #dedcd9;
+            border-radius: 4px;
+            padding: 0 0 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
 
-        .main-header {
+        /* Banner Atas Estetik */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        /* Efek Kertas Sobek / Gelombang di bawah foto utama */
+        .hero-banner::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: #dedcd9;
+            clip-path: polygon(0% 60%, 15% 45%, 35% 70%, 65% 30%, 85% 65%, 100% 40%, 100% 100%, 0% 100%);
+        }
+
+        /* Bagian Judul Utama */
+        .header-section {
+            padding: 40px 30px 20px 30px;
             text-align: center;
-            background-color: #d1ded6;
-            padding: 30px 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
         }
 
-        .main-header h1 {
-            font-size: 24px;
-            color: #2c4a3e;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
-        .main-header p {
-            font-size: 11px;
-            color: #555;
-            margin-top: 5px;
+        .header-section h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #1a1a1a;
+            line-height: 1;
         }
 
-        .section-title {
-            font-size: 18px;
-            color: #2c4a3e;
-            margin-bottom: 15px;
-            font-weight: bold;
-            border-left: 4px solid #2e7d32;
-            padding-left: 10px;
+        .header-section p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: #595755;
+            margin-top: -5px;
         }
 
-        /* Desain Kartu Paket Pernikahan */
+        .section-divider {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            text-align: center;
+            margin: 20px 0 30px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .section-divider::before, .section-divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 20%;
+            height: 1px;
+            background: #a6a4a1;
+        }
+        .section-divider::before { left: 10%; }
+        .section-divider::after { right: 10%; }
+
+        /* Layout Kartu Paket Sesuai Gambar Contoh */
         .pl-card {
-            background: #ffffff;
-            border: 2px solid #e0e0e0;
-            border-radius: 16px;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            padding: 25px 30px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
+            background: transparent;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid #cbc9c6;
         }
 
         .pl-card.active {
-            border-color: #2e7d32;
-            background-color: #fbfcfa;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+            background-color: rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        /* Foto dengan lengkungan Arch khas portfolio pernikahan */
+        .card-img-layout {
+            width: 100%;
+            height: 200px;
+            border-radius: 120px 120px 0 0; /* Membuat efek melengkung (Arch) */
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: none; /* Default disembunyikan, jika mau pakai gambar tinggal diaktifkan via CSS */
+        }
+
+        .card-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
         }
 
         .pl-card h3 {
-            font-size: 18px;
-            color: #2c4a3e;
-            margin-bottom: 4px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a1a1a;
         }
 
         .pl-card .price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #bfa15f;
-            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .pl-card .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: #6e6c69;
+            margin-bottom: 15px;
         }
 
         .pl-card ul {
@@ -93,148 +161,159 @@
 
         .pl-card ul li {
             font-size: 13px;
-            color: #555;
+            color: #4a4947;
             margin-bottom: 6px;
+            line-height: 1.5;
             position: relative;
             padding-left: 15px;
         }
 
         .pl-card ul li::before {
             content: "•";
-            color: #2e7d32;
-            font-weight: bold;
             position: absolute;
             left: 0;
+            color: #595755;
         }
 
         .btn-select {
             width: 100%;
-            background-color: #f0f0f0;
-            color: #444;
-            border: none;
+            background-color: transparent;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
             padding: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
-        .pl-card.active .btn-select {
-            background-color: #2e7d32;
-            color: white;
+        .btn-select:hover, .pl-card.active .btn-select {
+            background-color: #1a1a1a;
+            color: #ffffff;
         }
 
-        /* Area Form Penjadwalan */
+        /* Area Form Pengisian */
         .form-container {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            margin: 20px 30px;
+            padding: 30px 25px;
+            border-radius: 2px;
+            border: 1px solid #cbc9c6;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #444;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            color: #4a4947;
+            font-weight: 500;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: none;
+            border-bottom: 1px solid #a6a4a1;
+            background-color: transparent;
             font-size: 14px;
-            background-color: #fafafa;
+            color: #1a1a1a;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            border-color: #2c4a3e;
-            background-color: #fff;
             outline: none;
+            border-bottom: 1px solid #1a1a1a;
+            background-color: rgba(255,255,255,0.3);
         }
 
-        /* Kotak Perhitungan Otomatis */
+        /* Kotak Perhitungan Biaya Minimalis */
         .calc-box {
-            background-color: #f0f7f4;
-            border-left: 4px solid #2e7d32;
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+            border-top: 1px solid #cbc9c6;
+            border-bottom: 1px solid #cbc9c6;
+            padding: 15px 5px;
+            margin: 25px 0;
         }
 
         .calc-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 15px;
-            color: #333;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #4a4947;
         }
 
         .calc-item:last-child {
             margin-bottom: 0;
-            padding-top: 8px;
-            border-top: 1px solid #d0e2d5;
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
         .calc-item span.value {
-            font-weight: 700;
-            color: #1b5e20;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
 
         /* Info Nota / Pembayaran */
         .info-box {
-            font-size: 14px;
+            font-size: 12px;
             line-height: 1.6;
-            color: #333;
-            margin-bottom: 20px;
+            color: #595755;
+            margin-bottom: 25px;
         }
 
         .bank-info {
-            background-color: #fafafa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
+            background-color: rgba(255,255,255,0.3);
+            border: 1px dashed #a6a4a1;
             padding: 15px;
             margin-top: 15px;
+            color: #2b2b2b;
         }
 
         .btn-submit {
             width: 100%;
-            background-color: #2e7d32;
+            background-color: #1a1a1a;
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
+            padding: 15px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #404040;
         }
 
         /* Tombol Musik Melayang */
         .music-control {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             width: 45px;
             height: 45px;
             border-radius: 50%;
             background: #ffffff;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 1px solid #cbc9c6;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 999;
+            transition: all 0.3s;
         }
     </style>
 </head>
@@ -242,16 +321,21 @@
 
 <div class="container">
     
-    <div class="main-header">
-        <h1>NAP PRICING 2026</h1>
-        <p>Capture Your Beautiful Moments</p>
+    <div class="hero-banner"></div>
+
+    <div class="header-section">
+        <h1>Pricing</h1>
+        <p>packages</p>
     </div>
 
-    <h2 class="section-title">Pilih Paket Pernikahan</h2>
+    <div class="section-divider">Pilih Paket Pernikahan</div>
 
     <div class="pl-card" id="card-akad">
-        <h3>NAP Akad</h3>
-        <div class="price">Rp 1.000.000</div>
+        <div class="card-header-flex">
+            <h3>NAP Akad</h3>
+            <div class="price">Rp 1.000.000</div>
+        </div>
+        <div class="tagline">Never forget the special moments</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(1 gaun)</li>
@@ -261,12 +345,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP Akad', 1000000, 'card-akad')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP Akad', 1000000, 'card-akad')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-01">
-        <h3>NAP 01</h3>
-        <div class="price">Rp 1.400.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 01</h3>
+            <div class="price">Rp 1.400.000</div>
+        </div>
+        <div class="tagline">For intimate pictures about your big day</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -276,12 +363,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 01', 1400000, 'card-01')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 01', 1400000, 'card-01')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-02">
-        <h3>NAP 02</h3>
-        <div class="price">Rp 1.600.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 02</h3>
+            <div class="price">Rp 1.600.000</div>
+        </div>
+        <div class="tagline">A beautiful gallery to show your family</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -292,12 +382,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 02', 1600000, 'card-02')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 02', 1600000, 'card-02')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-03">
-        <h3>NAP 03</h3>
-        <div class="price">Rp 2.000.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 03</h3>
+            <div class="price">Rp 2.000.000</div>
+        </div>
+        <div class="tagline">Perfect memories captured in high quality</div>
         <ul>
             <li>2 Fotografer</li>
             <li>2 Album Hard Cover</li>
@@ -307,12 +400,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive+FD</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 03', 2000000, 'card-03')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 03', 2000000, 'card-03')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-04">
-        <h3>NAP 04</h3>
-        <div class="price">Rp 2.600.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 04</h3>
+            <div class="price">Rp 2.600.000</div>
+        </div>
+        <div class="tagline">Elegant wedding book storytelling</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -324,12 +420,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive+FD</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 04', 2600000, 'card-04')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 04', 2600000, 'card-04')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-05">
-        <h3>NAP 05</h3>
-        <div class="price">Rp 3.000.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 05</h3>
+            <div class="price">Rp 3.000.000</div>
+        </div>
+        <div class="tagline">Exclusive documentation for premium look</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -341,12 +440,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 05', 3000000, 'card-05')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 05', 3000000, 'card-05')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-06">
-        <h3>NAP 06</h3>
-        <div class="price">Rp 3.500.000</div>
+        <div class="card-header-flex">
+            <h3>NAP 06</h3>
+            <div class="price">Rp 3.500.000</div>
+        </div>
+        <div class="tagline">Complete visualization of your lifetime journey</div>
         <ul>
             <li>2 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -358,12 +460,15 @@
             <li>Free Video Teaser</li>
             <li>Soft File G-Drive+FD</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP 06', 3500000, 'card-06')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP 06', 3500000, 'card-06')">Select Package</button>
     </div>
 
     <div class="pl-card" id="card-gold">
-        <h3>NAP GOLD</h3>
-        <div class="price">Rp 5.500.000</div>
+        <div class="card-header-flex">
+            <h3>NAP GOLD</h3>
+            <div class="price">Rp 5.500.000</div>
+        </div>
+        <div class="tagline">The ultimate luxury cinematic experience</div>
         <ul>
             <li>3-4 Fotografer</li>
             <li>Unlimited Shoot~(gaun terakhir)</li>
@@ -377,107 +482,105 @@
             <li>Free Video BTS</li>
             <li>Soft File G-Drive+FD Custom</li>
         </ul>
-        <button class="btn-select" onclick="pilihPaket('NAP GOLD', 5500000, 'card-gold')">Pilih Paket Ini</button>
+        <button class="btn-select" onclick="pilihPaket('NAP GOLD', 5500000, 'card-gold')">Select Package</button>
     </div>
 
-    <h2 class="section-title" id="weddingForm" style="margin-top: 30px;">Form Penjadwalan & Nota</h2>
+    <div class="section-divider" id="weddingForm">Registration</div>
     
     <div class="form-container">
         <div class="form-group">
-            <label>Paket Dipilih :</label>
-            <input type="text" id="inputPaket" placeholder="Klik salah satu paket di atas..." readonly style="font-weight: bold; color: #4A634A;">
+            <label>Selected Package</label>
+            <input type="text" id="inputPaket" placeholder="Choose a package above..." readonly style="font-weight: 600; border-bottom: 1px dashed #a6a4a1;">
         </div>
 
         <div class="calc-box">
             <div class="calc-item">
-                <span>Total Harga:</span>
+                <span>Total Amount:</span>
                 <span class="value" id="txt-total">Rp 0</span>
             </div>
             <div class="calc-item">
-                <span>Minimal DP (20%):</span>
+                <span>Minimal Down Payment (20%):</span>
                 <span class="value" id="txt-dp">Rp 0</span>
             </div>
             <div class="calc-item">
-                <span>Sisa Pelunasan:</span>
+                <span>Remaining Balance:</span>
                 <span class="value" id="txt-sisa">Rp 0</span>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Nama Calon Pengantin Pria :</label>
-            <input type="text" id="namaPria" placeholder="Nama pengantin pria...">
+            <label>Groom's Name (Pengantin Pria)</label>
+            <input type="text" id="namaPria" placeholder="Enter full name...">
         </div>
 
         <div class="form-group">
-            <label>Nama Calon Pengantin Wanita :</label>
-            <input type="text" id="namaWanita" placeholder="Nama pengantin wanita...">
+            <label>Bride's Name (Pengantin Wanita)</label>
+            <input type="text" id="namaWanita" placeholder="Enter full name...">
         </div>
 
         <div class="form-group">
-            <label>MUA :</label>
-            <input type="text" id="mua" placeholder="Nama MUA / Sanggar...">
+            <label>Makeup Artist (MUA)</label>
+            <input type="text" id="mua" placeholder="Sanggar / MUA name...">
         </div>
 
         <div class="form-group">
-            <label>Link Share Location (Google Maps) :</label>
-            <input type="url" id="lokasi" placeholder="Tempel link shareloc Maps acara disini...">
+            <label>Google Maps Location Link</label>
+            <input type="url" id="lokasi" placeholder="Paste share link here...">
         </div>
 
         <div class="form-group">
-            <label>Acara :</label>
+            <label>Event Type (Acara)</label>
             <input type="text" id="acara" placeholder="e.g. Akad & Resepsi">
         </div>
 
         <div class="form-group">
-            <label>Tanggal :</label>
+            <label>Wedding Date</label>
             <input type="text" id="tanggal" placeholder="e.g. Sabtu, 6 Juni 2026">
         </div>
 
         <div class="form-group">
-            <label>Jam :</label>
+            <label>Time Schedule</label>
             <input type="text" id="jam" placeholder="e.g. 08.00 - Selesai">
         </div>
 
         <div class="form-group">
-            <label>IG :</label>
-            <input type="text" id="ig" placeholder="@username_klien">
+            <label>Instagram Client</label>
+            <input type="text" id="ig" placeholder="@username">
         </div>
 
         <div class="form-group">
-            <label>Upload Bukti Transfer DP :</label>
-            <input type="file" id="buktiTransfer" accept="image/*">
+            <label>Upload Receipt Payment (Bukti DP)</label>
+            <input type="file" id="buktiTransfer" accept="image/*" style="border: none; padding: 5px 0;">
         </div>
 
         <div class="info-box">
-            <p><strong>Catatan Penting:</strong> Batas pelunasan pembayaran adalah Hari H, maksimal H+2 setelah acara.</p>
-            <p>• Album Ready 1 Bulan</p>
+            <p><strong>Note:</strong> Pelunasan pembayaran dilakukan pada Hari H acara, maksimal H+2.</p>
+            <p>• Proses pengerjaan album memakan waktu sekitar 1 bulan.</p>
             
             <div class="bank-info">
-                <strong>Ketentuan Pembayaran:</strong><br>
-                • DP min 20%<br>
+                <strong>Payment Method:</strong><br>
+                • Down Payment minimal sebesar 20%<br>
                 • Bank BCA: <strong>0810985372</strong><br>
                 • a.n. <strong>MUH MUKHID</strong>
             </div>
         </div>
 
-        <button class="btn-submit" onclick="kirimKeWhatsApp()">Form Booking Sekarang</button>
+        <button class="btn-submit" onclick="kirimKeWhatsApp()">Confirm Booking via WhatsApp</button>
     </div>
 </div>
 
 <audio id="bg-music" loop>
-    <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mpeg">
+    <source src="romantis.mp3" type="audio/mpeg">
 </audio>
 <div class="music-control" id="music-btn" onclick="toggleMusic()">🎵</div>
 
 <script>
     let hargaGlobal = 0;
 
-    // Fungsi format rupiah
     function formatRupiah(angka) {
         return "Rp " + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
-    // Fungsi klik kartu paket
     function pilihPaket(namaPaket, harga, cardId) {
         const cards = document.getElementsByClassName('pl-card');
         for (let i = 0; i < cards.length; i++) {
@@ -498,7 +601,6 @@
         document.getElementById('weddingForm').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Fungsi mengumpulkan data dan mengirimkannya ke WhatsApp
     function kirimKeWhatsApp() {
         let paket = document.getElementById('inputPaket').value;
         let pria = document.getElementById('namaPria').value;
@@ -512,49 +614,44 @@
         let fileStruk = document.getElementById('buktiTransfer').files[0];
 
         if (!paket || !pria || !wanita || !tanggal || !lokasi) {
-            alert("Mohon pilih paket dan isi data utama (Nama, Tanggal, dan Share Location) terlebih dahulu!");
+            alert("Mohon lengkapi pilihan paket, nama pengantin, tanggal, dan lokasi acara!");
             return;
         }
 
         let dp = hargaGlobal * 0.20;
         let sisa = hargaGlobal - dp;
 
-        let teksWA = `*BOOKING NEW ORDER - NAP STUDIO*
-
-• *Paket Terpilih:* ${paket}
-• *Total Harga:* ${formatRupiah(hargaGlobal)}
-• *DP Minimal (20%):* ${formatRupiah(dp)}
-• *Sisa Pelunasan:* ${formatRupiah(sisa)}
-
-*DATA PENJADWALAN:*
-• *Pengantin Pria:* ${pria}
-• *Pengantin Wanita:* ${wanita}
-• *MUA / Sanggar:* ${mua}
-• *Acara:* ${acara}
-• *Tanggal:* ${tanggal}
-• *Jam / Waktu:* ${jam}
-• *Instagram Klien:* ${ig}
-• *Lokasi G-Maps:* ${lokasi}`;
+        let teksWA = "*NEW WEDDING BOOKING - NAP STUDIO*\\n\\n" +
+                     "• *Paket:* " + paket + "\\n" +
+                     "• *Total:* " + formatRupiah(hargaGlobal) + "\\n" +
+                     "• *DP (20%):* " + formatRupiah(dp) + "\\n" +
+                     "• *Sisa:* " + formatRupiah(sisa) + "\\n\\n" +
+                     "*DETAIL ACARA:*\\n" +
+                     "• *Pria:* " + pria + "\\n" +
+                     "• *Wanita:* " + wanita + "\\n" +
+                     "• *MUA:* " + mua + "\\n" +
+                     "• *Acara:* " + acara + "\\n" +
+                     "• *Tanggal:* " + tanggal + "\\n" +
+                     "• *Jam:* " + jam + "\\n" +
+                     "• *IG Klien:* " + ig + "\\n" +
+                     "• *Maps:* " + lokasi;
 
         if (fileStruk) {
-            teksWA += "\\n\\n*Catatan:* Foto bukti transfer DP sudah siap saya lampirkan dari galeri.";
-        } else {
-            teksWA += "\\n\\n*Catatan:* Belum melampirkan file foto bukti transfer.";
+            teksWA += "\\n\\n*Struk:* Foto bukti transfer DP sudah dilampirkan.";
         }
 
-        let nomorTujuan = "6282116046404";
-        let linkAkhir = "https://api.whatsapp.com/send?phone=" + 6282116046404 + "&text=" + encodeURIComponent(teksWA);
+        let nomorTujuan = "62810985372";
+        let linkAkhir = "https://api.whatsapp.com/send?phone=" + nomorTujuan + "&text=" + encodeURIComponent(teksWA);
         
         window.open(linkAkhir, '_blank');
     }
 
-    // Pengaturan Audio Musik Latar Belakang
     var music = document.getElementById("bg-music");
     var musicBtn = document.getElementById("music-btn");
 
     function toggleMusic() {
         if (music.paused) {
-            music.play().catch(e => console.log("Akses audio dibatasi"));
+            music.play().catch(e => console.log("Audio play diblokir"));
             musicBtn.innerText = "🔊";
         } else {
             music.pause();
@@ -562,7 +659,6 @@
         }
     }
 
-    // Memancing musik di HP pada ketukan pertama
     document.addEventListener('click', function() {
         if (music.paused) {
             music.play().catch(e => console.log("Izin audio aktif"));

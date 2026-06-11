@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAOKI ARVINO - PRICING PACKAGES</title>
+    <title>NAOKI ARVINO PHOTOGRAPHY - PRICING PACKAGES 2026</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 
@@ -638,26 +638,22 @@
         let dp = hargaGlobal * 0.20;
         let sisa = hargaGlobal - dp;
 
-        let         let teksWA = `*NEW WEDDING BOOKING - NAOKI ARVINO PHOTOGRAPHY*
-
-• *Paket Terpilih:* ${paket}
-• *Total Harga:* ${formatRupiah(hargaGlobal)}
-• *DP Minimal (20%):* ${formatRupiah(dp)}
-• *Sisa Pelunasan:* ${formatRupiah(sisa)}
-
-*DETAIL DATA PENJADWALAN:*
-• *Pengantin Pria:* ${pria}
-• *Pengantin Wanita:* ${wanita}
-• *MUA / Sanggar:* ${mua}
-• *Jenis Acara:* ${acara}
-• *Tanggal Acara:* ${tanggal}
-• *Jam/Waktu:* ${jam}
-• *Instagram Klien:* ${ig}
-• *Link Lokasi:* ${lokasi}
-
-*KETERANGAN:*
-Halo NAOKI ARVINO PHOTOGRAPHY, berikut data pemesanan kami. Di bawah pesan ini akan langsung saya lampirkan foto struk bukti transfer DP agar jadwal bisa segera dimasukkan ke kalender. Terima kasih! ✨`;
-
+        let teksWA = "*NEW WEDDING BOOKING - NAOKI ARVINO PHOTOGRAPHY*\\n\\n" +
+                     "• *Paket Terpilih:* " + paket + "\\n" +
+                     "• *Total Harga:* " + formatRupiah(hargaGlobal) + "\\n" +
+                     "• *DP Minimal (20%):* " + formatRupiah(dp) + "\\n" +
+                     "• *Sisa Pelunasan:* " + formatRupiah(sisa) + "\\n\\n" +
+                     "*DETAIL DATA PENJADWALAN:*\\n" +
+                     "• *Pengantin Pria:* " + pria + "\\n" +
+                     "• *Pengantin Wanita:* " + wanita + "\\n" +
+                     "• *MUA / Sanggar:* " + mua + "\\n" +
+                     "• *Jenis Acara:* " + acara + "\\n" +
+                     "• *Tanggal Acara:* " + tanggal + "\\n" +
+                     "• *Jam/Waktu:* " + jam + "\\n" +
+                     "• *Instagram Klien:* " + ig + "\\n" +
+                     "• *Link Lokasi:* " + lokasi + "\\n\\n" +
+                     "*KETERANGAN:*\\n" +
+                     "Halo NAOKI ARVINO PHOTOGRAPHY, berikut data pemesanan kami. Di bawah pesan ini akan langsung saya lampirkan foto struk bukti transfer DP agar jadwal bisa segera dimasukkan ke kalender. Terima kasih! ✨";
 
         let nomorTujuan = "6282116046404";
         let linkAkhir = "https://api.whatsapp.com/send?phone=" + 6282116046404 + "&text=" + encodeURIComponent(teksWA);
